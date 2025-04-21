@@ -9,6 +9,8 @@ services:
       - bus-booking
       - bus-service
       - user-service
+      - agent-service
+      - booking-service
     networks:
       - bus-network
 
@@ -30,6 +32,20 @@ services:
     build: ./user-service
     ports:
       - "8003:8003"
+    networks:
+      - bus-network
+
+  agent-service:
+    build: ./agent-service
+    ports:
+      - "8006:8006"
+    networks:
+      - bus-network
+
+  booking-service:
+    build: ./booking-service
+    ports:
+      - "8007:8007"
     networks:
       - bus-network
 

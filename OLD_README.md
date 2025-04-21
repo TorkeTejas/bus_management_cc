@@ -172,3 +172,6 @@ curl -X POST "http://localhost:8084/bookings" \
 - Services can be deployed independently
 - Easy scaling of individual components
 - Consistent environment across development and production
+
+## Health Check Script
+The repository includes a health check script (`
