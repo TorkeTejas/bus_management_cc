@@ -1,3 +1,4 @@
+#old end point check script
 #!/bin/bash
 
 echo "Checking all service endpoints..."

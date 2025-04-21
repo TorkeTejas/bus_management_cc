@@ -37,8 +37,8 @@ docker-compose up --build -d
 
 3. Check service health (optional):
 ```bash
-chmod +x check_services.sh
-./check_services.sh
+chmod +x  integrated_end_point_check.sh
+./integrated_end_point_check.sh
 ```
 
 ## Available Endpoints
