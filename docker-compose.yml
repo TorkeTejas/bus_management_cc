@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8084:8084"
+    depends_on:
+      - bus-booking
+      - bus-service
+      - user-service
+    networks:
+      - bus-network
+
+  bus-booking:
+    build: ./bus-booking
+    ports:
+      - "8001:8001"
+    networks:
+      - bus-network
+
+  bus-service:
+    build: ./bus-service
+    ports:
+      - "8002:8002"
+    networks:
+      - bus-network
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "8003:8003"
+    networks:
+      - bus-network
+
+networks:
+  bus-network:
+    driver: bridge 
