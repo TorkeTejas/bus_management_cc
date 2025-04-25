@@ -9,7 +9,6 @@ This is a microservices-based bus booking system that provides a scalable soluti
 - User Service (Port 8003)
 - Agent Service (Port 8006)
 - Booking Service (Port 8007)
-- Error Handling Service (Port 8005)
 
 ## Prerequisites
 - Docker
@@ -80,13 +79,6 @@ chmod +x  integrated_end_point_check.sh
 - `GET /bookings` - List all bookings
 - `POST /bookings` - Create a new booking
 
-### Error Handling Service (http://localhost:8005)
-- `GET /health` - Get health status of all services
-- `GET /health/{service_name}` - Get health status of a specific service
-- `GET /errors` - Get recent error history
-- `GET /errors/{service_name}` - Get errors for a specific service
-- `POST /proxy` - Make requests through the error handling service
-
 ## Sample API Usage
 
 1. Register a new user:
@@ -154,12 +146,6 @@ curl -X POST "http://localhost:8084/bookings" \
   - `/bookings` - Create and list bookings
   - Support for both direct user bookings and agent-assisted bookings
 
-#### Error Handling Service (Port 8005)
-- Monitors health of all microservices
-- Provides user-friendly error messages
-- Tracks service failures and recovery
-- Offers service health status endpoints
-
 ### Integration Points
 1. API Gateway Integration:
    - Routes all agent-related requests to Agent Service
@@ -186,46 +172,3 @@ curl -X POST "http://localhost:8084/bookings" \
 - Services can be deployed independently
 - Easy scaling of individual components
 - Consistent environment across development and production
-
-## Error Handling Service Features
-
-The error handling service provides the following features:
-
-1. **Health Monitoring**
-   - Monitors all microservices every 30 seconds
-   - Tracks service status (up, down, degraded)
-   - Measures response times
-   - Provides user-friendly error messages
-
-2. **Endpoints**
-   - `/health` - Get health status of all services
-   - `/health/{service_name}` - Get health status of a specific service
-   - `/errors` - Get recent error history
-   - `/errors/{service_name}` - Get errors for a specific service
-   - `/proxy` - Make requests through the error handling service
-
-3. **User-Friendly Error Messages**
-   - Service-specific error messages
-   - Support contact information
-   - Clear instructions for users
-   - Error resolution status tracking
-
-## Error Handling Service Configuration
-
-The error handling service can be configured through environment variables:
-
-- `SUPPORT_CONTACT`: Email address for support (default: support@example.com)
-- `HEALTH_CHECK_INTERVAL`: Interval between health checks in seconds (default: 30)
-- `REQUEST_TIMEOUT`: Timeout for service requests in seconds (default: 3)
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

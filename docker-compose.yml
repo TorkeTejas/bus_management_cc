@@ -12,6 +12,7 @@ services:
       - user-service
       - agent-service
       - booking-service
+      - error-handling
     networks:
       - bus-network
 
@@ -47,6 +48,13 @@ services:
     build: ./booking-service
     ports:
       - "8007:8007"
+    networks:
+      - bus-network
+
+  error-handling:
+    build: ./error_handling
+    ports:
+      - "8005:8005"
     networks:
       - bus-network
 
